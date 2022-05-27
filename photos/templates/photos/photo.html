@@ -16,9 +16,9 @@
             <div class="col">
                 <a href="{% url 'gallery' %}" class="btn btn-dark my-3">Go back</a>
                 <div style="height: 90vh;">
-                    <img style="max-width: 100%; max-height: 100%;" src="https://www.pixelstalk.net/wp-content/uploads/2016/10/Binary-Code-Background-for-Desktop.jpg"
+                    <img style="max-width: 100%; max-height: 100%;" src="{{photo.image.url}}"
                         alt="">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur reiciendis non assumenda voluptatum possimus exercitationem distinctio obcaecati suscipit nihil illum, excepturi consequuntur minima earum ea beatae, commodi nisi ipsum maxime!</p>
+                        <p>{{photo.description}}</p>
 
                 </div>
             </div>
