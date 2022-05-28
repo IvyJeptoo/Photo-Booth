@@ -51,7 +51,7 @@
                             </div>
                             <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-block btn-sm  m-1 ">view category</a>
                             <button type="button" class="btn btn-outline-dark btn-sm m-1" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
+                                data-bs-target="#exampleModal{{photo.id}}">
                                 view modal
                             </button>
                             
@@ -61,7 +61,7 @@
                    
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" 
+                    <div class="modal fade" id="exampleModal{{photo.id}}" tabindex="-1" 
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" style="width: 50rem;">
                             <div class="modal-content">
