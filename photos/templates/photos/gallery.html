@@ -22,7 +22,7 @@
             <div class="col-md-3">
                 
                 <div class="card">  
-                    <div class="card-header">
+                    <div class="card-header text-white bg-dark">
                         Categories
                     </div>                  
                     <ul class="list-group list-group-flush">
@@ -41,6 +41,24 @@
                         
                     </ul>
                 </div>
+                <div class="card my-5">
+                    <div class="card-header text-white bg-dark">
+                        Location
+                    </div>
+                    <ul class="list-group list-group-flush">
+                       
+                        {% for location in locations %}
+                        <li class="list-group-item bg-light">
+                            <a href="{% url 'location' %}?location={{location.name}}">
+                                {{location.name}}
+                            </a>
+                        </li>
+
+                        {% endfor %}
+                        
+
+                    </ul>
+                </div>
 
 
             </div>
@@ -56,9 +74,10 @@
                                 src="{{photo.image.url}}"
                                 alt="Card image cap">
                             <div class="card-body">
-                                <small> <b>Category:</b> {{photo.category.name}}</small>
+                                <small> <b>Category:</b> {{photo.category.name}}</small> <br>
+                                <small> <b>Description:</b> {{photo.description}}</small> <br>
+                                <small> <b>Location:</b> {{photo.location}}</small>
                             </div>
-                            <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-block btn-sm  m-1 ">view category</a>
                             <button type="button" class="btn btn-outline-dark btn-sm m-1" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal{{photo.id}}">
                                 view modal
@@ -67,21 +86,6 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <div class="card my-2">
-                            <img class="image-thumbail" src="{{photo.image.url}}" alt="Card image cap">
-                            <div class="card-body">
-                                <small> <b>Category:</b> {{photo.category.name}}</small>
-                            </div>
-                            <a href="{% url 'photo' photo.id %}"
-                                class="btn btn-outline-dark btn-block btn-sm  m-1 ">view category</a>
-                            <button type="button" class="btn btn-outline-dark btn-sm m-1" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal{{photo.id}}">
-                                view modal
-                            </button>
-
-                        </div>
-                    </div>
 
                    
 
