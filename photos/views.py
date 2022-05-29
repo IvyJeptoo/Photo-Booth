@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Category, Photo
+from .models import Category, Photo, Location
 
 def gallery(request):
     category = request.GET.get('category')
@@ -8,10 +8,26 @@ def gallery(request):
     else:
         photos = Photo.objects.filter(category__name = category)
         
-    categories = Category.objects.all()  
-    context = {'categories': categories, 'photos':photos}
+    categories = Category.objects.all()   
+    locations = Location.objects.all()  
+    
+    
+    context = {'categories': categories, 'photos':photos, 'locations': locations}
     
     return render(request,'photos/gallery.html', context)
+
+def location(request):
+    location = request.GET.get('location')
+    if location == None:
+        photos = Photo.objects.all()
+    else:
+        photos = Photo.objects.filter(location__name = location)
+        
+    locations = Location.objects.all() 
+    
+    context = {'locations': locations, 'photos':photos}
+    
+    return render(request,'photos/location.html', context)
 
 def viewPhoto(request, pk):
     photo = Photo.objects.get(id=pk)
