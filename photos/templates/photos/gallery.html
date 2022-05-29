@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +15,20 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
+    <!-- css link -->
+      {% block styles %}
+      
+      <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+      {% endblock %}
+
 
 </head>
-<body class="m-5">
+<body class="m-3">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
                 
-                <div class="card">  
+                <div class="card m-2">
                     <div class="card-header text-white bg-dark">
                         Categories
                     </div>                  
@@ -74,13 +81,11 @@
                                 src="{{photo.image.url}}"
                                 alt="Card image cap">
                             <div class="card-body">
-                                <small> <b>Category:</b> {{photo.category.name}}</small> <br>
-                                <small> <b>Description:</b> {{photo.description}}</small> <br>
-                                <small> <b>Location:</b> {{photo.location}}</small>
+                               
                             </div>
                             <button type="button" class="btn btn-outline-dark btn-sm m-1" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal{{photo.id}}">
-                                view modal
+                                Photo Details
                             </button>
                             
                         </div>
@@ -92,7 +97,7 @@
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal{{photo.id}}" tabindex="-1" 
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" style="width: 50rem;">
+                        <div class="modal-dialog" style="width: 30rem;">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Category:{{photo.category.name}}</h5>
@@ -101,10 +106,13 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <img class="card-img-top"
+                                    <img style="height: 15em; width: 15em; border-radius: 50%; margin-left: 5em;" class="card-img-top"
                                 src="{{photo.image.url}}"
-                                alt="Card image cap">
-                                <p>description: {{category.description}}</p>
+                                alt="Card image cap"> <br> <br> <br>
+                                
+                                <small> <b>Description:</b> {{photo.description}}</small> <br> <br> 
+                                <small> <b>Location:</b> {{photo.location}}</small>
+                                
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
